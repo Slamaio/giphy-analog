@@ -1,0 +1,1 @@
+import{r,o as s,c as _}from"./index-dfc122bd.js";const a=(e,n)=>{const o=e.__vccOpts||e;for(const[t,c]of n)o[t]=c;return o},f={};function m(e,n){const o=r("v-main");return s(),_(o)}const i=a(f,[["render",m]]);export{i as default};
