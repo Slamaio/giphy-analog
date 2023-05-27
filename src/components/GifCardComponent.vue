@@ -84,6 +84,7 @@ async function toClipboard(url: string) {
   position: fixed;
   left: 1.5rem;
   bottom: 1.5rem;
+  max-width: calc(100svw - 3rem);
   z-index: 9999;
 }
 </style>
