@@ -1,7 +1,11 @@
 <template>
-  <v-app-bar flat class="pa-2">
+  <v-app-bar flat>
     <v-row class="align-center">
-      <v-col cols="3"><v-img src="src/assets/giphy-logo--1320x282.png" height="64" /></v-col>
+      <v-col cols="3">
+        <router-link to="/">
+          <v-img src="@/assets/logo.svg" />
+        </router-link>
+      </v-col>
       <v-col cols="9">
         <v-text-field
           v-model="searchQuery"
@@ -18,24 +22,13 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
+import { debounce } from '@/utils'
 
 const searchQuery = ref('')
 
 const emit = defineEmits<{
   (event: 'update', value: string): void
 }>()
-
-function debounce(func: Function, delay: number) {
-  let timeoutId: ReturnType<typeof setTimeout>
-  return function (...args: any[]) {
-    if (timeoutId) {
-      clearTimeout(timeoutId)
-    }
-    timeoutId = setTimeout(() => {
-      func.apply(null, args)
-    }, delay)
-  }
-}
 
 const debounceSearch = debounce(function () {
   emit('update', searchQuery.value)

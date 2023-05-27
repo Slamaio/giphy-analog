@@ -2,22 +2,24 @@
 
 export interface IGif {
   id: string
+  url: string
   title: string
-  user: {
-    avatar_url: string
-    profile_url: string
-    username: string
-  }
+  user?: IUser
   images: {
     original: {
       url: string
     }
-    downsized: {
+    fixed_height: {
+      url: string
+    }
+    fixed_height_still: {
       url: string
     }
   }
 }
 
-export interface IApiOptions {
-  [key: string]: string
+export interface IUser {
+  avatar_url: string
+  profile_url: string
+  username: string
 }
