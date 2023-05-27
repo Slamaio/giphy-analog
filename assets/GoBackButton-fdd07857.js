@@ -1,0 +1,1 @@
+import{B as s,C as o,b as a,m as r,w as n,s as c,D as u}from"./index-ef8059a2.js";const d=s("app",{state:()=>({lastGifId:"",user:{}})}),f={};function p(t,e){return a(),r(u,{class:"mb-4",onClick:e[0]||(e[0]=i=>t.$router.go(-1))},{default:n(()=>[c("Go Back")]),_:1})}const l=o(f,[["render",p]]);export{l as G,d as u};
