@@ -7,6 +7,7 @@
     "
     search
   />
+
   <v-main>
     <v-container fluid>
       <v-row>
@@ -18,14 +19,14 @@
       </v-row>
 
       <div class="text-center">
-        <v-pagination v-model="page" :length="totalCount / limit" />
+        <v-pagination v-model="page" :length="pagesCount" />
       </div>
     </v-container>
   </v-main>
 </template>
 
 <script setup lang="ts">
-import { watch, ref } from 'vue'
+import { watch, ref, computed } from 'vue'
 import type { IGif } from 'env'
 import giphy, { type IGiphy } from '@/api/giphy'
 import GifCardComponent from '@/components/GifCardComponent.vue'
@@ -37,6 +38,8 @@ const totalCount = ref(0)
 const limit = ref(20)
 const offset = ref(0)
 const query = ref('')
+
+const pagesCount = computed(() => Math.floor(totalCount.value / limit.value))
 
 watch(
   page,

@@ -55,15 +55,10 @@ const gif = ref<IGif>({
   url: '',
   title: '',
   images: {
-    original: {
-      url: '',
-    },
-    fixed_height: {
-      url: '',
-    },
-    fixed_height_still: {
-      url: '',
-    },
+    original: { url: '' },
+    original_still: { url: '' },
+    fixed_height: { url: '' },
+    fixed_height_still: { url: '' },
   },
 } as IGif)
 const randomGifs = ref<IGif[]>([])
@@ -72,7 +67,6 @@ watch(
   () => route.params.gifId,
   async (newValue) => {
     gif.value = (await giphy.fetchGifById(newValue as string)) as IGif
-    appStore.lastGifId = gif.value.id
     appStore.user = gif.value.user
   },
   { immediate: true },
