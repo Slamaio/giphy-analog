@@ -19,9 +19,25 @@
       <v-btn @click.prevent="share(gif)">Share</v-btn>
     </v-card-actions>
   </v-card>
+
+  <v-slide-y-reverse-transition>
+    <v-alert
+      v-if="copySuccess"
+      class="copy_alert"
+      type="success"
+      title="Link copied to clipboard"
+    />
+    <v-alert
+      v-else-if="copyError"
+      class="copy_alert"
+      type="success"
+      title="Copy to clipboard failed"
+    />
+  </v-slide-y-reverse-transition>
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue'
 import type { IGif } from 'env'
 
 defineProps<{
@@ -30,15 +46,41 @@ defineProps<{
   shareable?: boolean
 }>()
 
-function share(gif: IGif) {
+const copySuccess = ref(false)
+const copyError = ref(false)
+
+async function share(gif: IGif) {
   if (navigator.share) {
-    navigator.share({
+    await navigator.share({
       title: gif.title,
       text: gif.title,
       url: gif.url,
     })
   } else {
     console.log('Web Share API not supported.')
+    await toClipboard(`${gif.title}\n${gif.url}`)
   }
 }
+
+async function toClipboard(url: string) {
+  try {
+    await navigator.clipboard.writeText(url)
+    copySuccess.value = true
+  } catch (e) {
+    copyError.value = true
+  }
+  setTimeout(() => {
+    copySuccess.value = false
+    copyError.value = false
+  }, 2000)
+}
 </script>
+
+<style scoped>
+.copy_alert {
+  position: fixed;
+  left: 1rem;
+  bottom: 1rem;
+  z-index: 9999;
+}
+</style>

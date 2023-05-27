@@ -6,15 +6,10 @@ export interface IGif {
   title: string
   user?: IUser
   images: {
-    original: {
-      url: string
-    }
-    fixed_height: {
-      url: string
-    }
-    fixed_height_still: {
-      url: string
-    }
+    original: { url: string }
+    original_still: { url: string }
+    fixed_height: { url: string }
+    fixed_height_still: { url: string }
   }
 }
 
