@@ -1,7 +1,7 @@
 <template>
   <v-app-bar flat class="px-2" color="background">
     <v-row class="align-center justify-center">
-      <v-col cols="3">
+      <v-col :cols="search ? 3 : 12">
         <router-link to="/">
           <v-img src="@/assets/logo.svg" height="35" />
         </router-link>

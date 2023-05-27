@@ -4,8 +4,8 @@
     <v-container fluid>
       <GoBackButtonVue block />
       <v-card v-if="gif?.id" class="bg-background" flat>
-        <v-card-title class="px-0">
-          <h1>{{ gif?.title }}</h1>
+        <v-card-title class="px-0 text-wrap">
+          {{ gif?.title }}
         </v-card-title>
 
         <v-card-text class="px-0">
@@ -18,16 +18,6 @@
         </v-card-text>
       </v-card>
 
-      <!-- <div v-if="gif?.id" class="my-5">
-        <h1>{{ gif?.title }}</h1>
-        <GifCardComponent :gif="gif" original shareable />
-        <p>
-          Added by:
-          <router-link v-if="gif?.user" to="/user">{{ gif?.user?.username }}</router-link>
-          <span v-else>Anonym</span>
-        </p>
-      </div> -->
-
       <v-alert
         v-else
         class="mx-auto my-5"
@@ -37,9 +27,9 @@
         max-width="300"
       />
 
-      <v-slide-group v-model="model" show-arrows>
+      <v-slide-group v-model="model" show-arrows center-active>
         <v-slide-group-item v-for="randomGif in randomGifs" :key="randomGif.id">
-          <GifCardComponent class="ma-4" :gif="randomGif" :to="/gifs/ + randomGif.id" />
+          <GifCardComponent class="mx-4" :gif="randomGif" :to="/gifs/ + randomGif.id" />
         </v-slide-group-item>
       </v-slide-group>
     </v-container>
