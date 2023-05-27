@@ -1,9 +1,9 @@
 <template>
   <v-card>
     <v-img
+      :height="height"
       :lazy-src="gif.images.fixed_height_still.url"
       :src="original ? gif.images.original.url : gif.images.fixed_height.url"
-      height="100%"
     >
       <template v-slot:placeholder>
         <div class="d-flex align-center justify-center fill-height">
@@ -11,6 +11,7 @@
         </div>
       </template>
     </v-img>
+
     <v-card-actions v-if="shareable">
       <v-spacer />
       <v-btn @click.prevent="share(gif)">Share</v-btn>
@@ -25,6 +26,7 @@ defineProps<{
   gif: IGif
   original?: boolean
   shareable?: boolean
+  height?: string
 }>()
 
 function share(gif: IGif) {

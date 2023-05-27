@@ -1,18 +1,19 @@
 <template>
-  <v-app-bar flat>
-    <v-row class="align-center">
+  <v-app-bar flat class="px-2" color="background">
+    <v-row class="align-center justify-center">
       <v-col cols="3">
         <router-link to="/">
-          <v-img src="@/assets/logo.svg" />
+          <v-img src="@/assets/logo.svg" height="35" />
         </router-link>
       </v-col>
-      <v-col cols="9">
+      <v-col cols="9" v-if="search">
         <v-text-field
           v-model="searchQuery"
           label="Search"
           variant="outlined"
           single-line
           hide-details
+          flat
           @input="debounceSearch"
         />
       </v-col>
@@ -23,6 +24,10 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { debounce } from '@/utils'
+
+defineProps<{
+  search?: boolean
+}>()
 
 const searchQuery = ref('')
 

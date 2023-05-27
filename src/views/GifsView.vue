@@ -1,10 +1,24 @@
 <template>
   <AppBarComponent />
   <v-main>
-    <v-container>
+    <v-container fluid>
       <GoBackButtonVue block />
+      <v-card v-if="gif?.id" class="bg-background" flat>
+        <v-card-title class="px-0">
+          <h1>{{ gif?.title }}</h1>
+        </v-card-title>
 
-      <div v-if="gif?.id" class="my-5">
+        <v-card-text class="px-0">
+          <GifCardComponent :gif="gif" original shareable height="80vh" />
+          <p>
+            Added by:
+            <router-link v-if="gif?.user" to="/user">{{ gif?.user?.username }}</router-link>
+            <span v-else>Anonym</span>
+          </p>
+        </v-card-text>
+      </v-card>
+
+      <!-- <div v-if="gif?.id" class="my-5">
         <h1>{{ gif?.title }}</h1>
         <GifCardComponent :gif="gif" original shareable />
         <p>
@@ -12,7 +26,7 @@
           <router-link v-if="gif?.user" to="/user">{{ gif?.user?.username }}</router-link>
           <span v-else>Anonym</span>
         </p>
-      </div>
+      </div> -->
 
       <v-alert
         v-else

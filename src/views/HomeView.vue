@@ -5,6 +5,7 @@
         query = value
       }
     "
+    search
   />
   <v-main>
     <v-container fluid>
@@ -24,8 +25,8 @@
 </template>
 
 <script setup lang="ts">
-import type { IGif } from 'env'
 import { watch, ref } from 'vue'
+import type { IGif } from 'env'
 import giphy, { type IGiphy } from '@/api/giphy'
 import GifCardComponent from '@/components/GifCardComponent.vue'
 import AppBarComponent from '@/components/AppBarComponent.vue'
