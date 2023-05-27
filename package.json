@@ -14,6 +14,7 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@mdi/font": "^7.2.96",
     "dotenv": "^16.0.3",
     "vue": "^3.3.2",
     "vue-router": "^4.2.0",

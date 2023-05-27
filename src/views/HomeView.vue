@@ -1,21 +1,21 @@
 <template>
-  <AppBarComponent
+  <!-- <AppBarComponent
     @update="
       (value) => {
         query = value
       }
     "
-  />
+  /> -->
   <v-main>
     <v-container fluid>
       <v-row>
-        <v-col v-for="gif in gifs" :key="gif.id" cols="3">
-          <GifCardComponent :gif="gif" />
+        <v-col v-for="gif in gifs" :key="gif.id" cols="12" sm="6" md="4" lg="3">
+          <GifCardComponent :gif="gif" :to="/gifs/ + gif.id" />
         </v-col>
       </v-row>
 
       <div class="text-center">
-        <v-pagination v-model="page" :length="15" :total-visible="7" />
+        <v-pagination v-model="page" :length="15" />
       </div>
     </v-container>
   </v-main>
