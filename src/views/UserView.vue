@@ -4,10 +4,8 @@
     <v-container fluid>
       <GoBackButtonVue block />
       <v-row class="align-center">
-        <v-col cols="auto">
-          <v-img :src="user?.avatar_url" width="100" height="100" />
-        </v-col>
-        <v-col>
+        <v-col cols="auto" class="mx-auto">
+          <v-img :src="user?.avatar_url" max-width="250" max-height="250" />
           <h1>{{ user?.username }}</h1>
           <p>
             <a :href="user?.profile_url" target="_blank">{{ user?.profile_url }}</a>

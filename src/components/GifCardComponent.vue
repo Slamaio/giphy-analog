@@ -3,6 +3,7 @@
     <v-img
       class="mx-auto"
       max-width="900"
+      height="100%"
       :lazy-src="gif.images.fixed_height_still.url"
       :src="original ? gif.images.original.url : gif.images.fixed_height.url"
     >
@@ -31,14 +32,11 @@ defineProps<{
 
 function share(gif: IGif) {
   if (navigator.share) {
-    navigator
-      .share({
-        title: gif.title,
-        text: gif.title,
-        url: gif.url,
-      })
-      .then(() => console.log('Successful share'))
-      .catch((error) => console.log('Error sharing', error))
+    navigator.share({
+      title: gif.title,
+      text: gif.title,
+      url: gif.url,
+    })
   } else {
     console.log('Web Share API not supported.')
   }

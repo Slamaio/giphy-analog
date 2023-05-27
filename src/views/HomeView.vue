@@ -64,8 +64,6 @@ async function fetchGifs() {
 
   gifs.value = res.gifs
   totalCount.value = res.total_count
-
-  console.log(totalCount.value)
 }
 </script>
 
