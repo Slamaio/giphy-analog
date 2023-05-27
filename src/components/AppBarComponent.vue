@@ -1,21 +1,25 @@
 <template>
   <v-app-bar flat class="px-2" color="background">
     <v-row class="align-center justify-center">
-      <v-col :cols="search ? 3 : 12">
+      <v-col :cols="3">
         <router-link to="/">
           <v-img src="@/assets/logo.svg" height="35" />
         </router-link>
       </v-col>
-      <v-col cols="9" v-if="search">
-        <v-text-field
-          v-model="searchQuery"
-          label="Search"
-          variant="outlined"
-          single-line
-          hide-details
-          flat
-          @input="debounceSearch"
-        />
+      <v-col cols="9">
+        <v-form @submit.prevent="onCLick">
+          <v-text-field
+            v-model="searchQuery"
+            label="Search"
+            variant="outlined"
+            append-inner-icon="mdi-magnify"
+            single-line
+            hide-details
+            flat
+            @input="debounceSearch"
+            @click:append-inner="onCLick"
+          />
+        </v-form>
       </v-col>
     </v-row>
   </v-app-bar>
@@ -24,18 +28,19 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { debounce } from '@/utils'
+import { useRouter } from 'vue-router'
+import { useAppStore } from '@/stores/app'
 
-defineProps<{
-  search?: boolean
-}>()
+const router = useRouter()
+const appStore = useAppStore()
 
 const searchQuery = ref('')
 
-const emit = defineEmits<{
-  (event: 'update', value: string): void
-}>()
-
 const debounceSearch = debounce(function () {
-  emit('update', searchQuery.value)
+  appStore.searchQuery = searchQuery.value
 }, 500)
+
+function onCLick() {
+  router.push('/')
+}
 </script>

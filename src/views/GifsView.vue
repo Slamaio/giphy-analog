@@ -1,15 +1,14 @@
 <template>
-  <AppBarComponent />
   <v-main>
     <v-container fluid>
-      <GoBackButtonVue block />
+      <GoBackButton block />
       <v-card v-if="gif?.id" class="bg-background" flat>
         <v-card-title class="px-0 text-wrap">
           {{ gif?.title }}
         </v-card-title>
 
         <v-card-text class="px-0">
-          <GifCardComponent :gif="gif" original shareable />
+          <GifCard :gif="gif" original shareable />
           <p>
             Added by:
             <router-link v-if="gif?.user" to="/user">{{ gif?.user?.username }}</router-link>
@@ -29,7 +28,7 @@
 
       <v-slide-group v-model="model" show-arrows center-active>
         <v-slide-group-item v-for="randomGif in randomGifs" :key="randomGif.id">
-          <GifCardComponent class="mx-2" :gif="randomGif" clickable />
+          <GifCard class="mx-2" :gif="randomGif" :to="/gifs/ + randomGif.id" />
         </v-slide-group-item>
       </v-slide-group>
     </v-container>
@@ -42,9 +41,8 @@ import { useRoute } from 'vue-router'
 import type { IGif } from 'env'
 import giphy from '@/api/giphy'
 import { useAppStore } from '@/stores/app'
-import GifCardComponent from '@/components/GifCardComponent.vue'
-import AppBarComponent from '@/components/AppBarComponent.vue'
-import GoBackButtonVue from '@/components/GoBackButton.vue'
+import GifCard from '@/components/GifCardComponent.vue'
+import GoBackButton from '@/components/GoBackButtonComponent.vue'
 
 const route = useRoute()
 const appStore = useAppStore()

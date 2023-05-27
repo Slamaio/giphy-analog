@@ -1,8 +1,7 @@
 <template>
-  <AppBarComponent />
   <v-main>
     <v-container fluid>
-      <GoBackButtonVue block />
+      <GoBackButton block />
       <v-row class="align-center">
         <v-col cols="auto" class="mx-auto">
           <v-img :src="user?.avatar_url" max-width="250" max-height="250" />
@@ -20,8 +19,7 @@
 import { onBeforeMount, ref } from 'vue'
 import type { IUser } from 'env'
 import { useAppStore } from '@/stores/app'
-import AppBarComponent from '@/components/AppBarComponent.vue'
-import GoBackButtonVue from '@/components/GoBackButton.vue'
+import GoBackButton from '@/components/GoBackButtonComponent.vue'
 
 const appStore = useAppStore()
 

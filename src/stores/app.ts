@@ -4,5 +4,7 @@ import { type IUser } from '@/stores/types'
 export const useAppStore = defineStore('app', {
   state: () => ({
     user: {} as IUser | undefined,
+    copyAlert: 'none' as 'none' | 'success' | 'error',
+    searchQuery: '',
   }),
 })
