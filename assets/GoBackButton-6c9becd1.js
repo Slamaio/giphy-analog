@@ -1,0 +1,1 @@
+import{A as o,B as s,b as a,m as r,w as n,p as c,C as p}from"./index-60a004f8.js";const _=o("app",{state:()=>({user:{}})}),u={};function f(t,e){return a(),r(p,{class:"mb-4",onClick:e[0]||(e[0]=B=>t.$router.go(-1))},{default:n(()=>[c("Go Back")]),_:1})}const d=s(u,[["render",f]]);export{d as G,_ as u};
