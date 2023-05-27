@@ -13,7 +13,7 @@
       <v-row>
         <transition-group name="gif-transition">
           <v-col v-for="gif in gifs" :key="gif.id" cols="12" sm="6" md="4" lg="3">
-            <GifCardComponent :gif="gif" :to="/gifs/ + gif.id" shareable />
+            <GifCardComponent :gif="gif" shareable clickable />
           </v-col>
         </transition-group>
       </v-row>

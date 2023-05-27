@@ -29,7 +29,7 @@
 
       <v-slide-group v-model="model" show-arrows center-active>
         <v-slide-group-item v-for="randomGif in randomGifs" :key="randomGif.id">
-          <GifCardComponent class="mx-4" :gif="randomGif" :to="/gifs/ + randomGif.id" />
+          <GifCardComponent class="mx-2" :gif="randomGif" clickable />
         </v-slide-group-item>
       </v-slide-group>
     </v-container>
