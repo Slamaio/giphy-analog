@@ -9,7 +9,7 @@
         </v-card-title>
 
         <v-card-text class="px-0">
-          <GifCardComponent :gif="gif" original shareable height="80vh" />
+          <GifCardComponent :gif="gif" original shareable />
           <p>
             Added by:
             <router-link v-if="gif?.user" to="/user">{{ gif?.user?.username }}</router-link>

@@ -1,7 +1,8 @@
 <template>
   <v-card>
     <v-img
-      :height="height"
+      class="mx-auto"
+      max-width="900"
       :lazy-src="gif.images.fixed_height_still.url"
       :src="original ? gif.images.original.url : gif.images.fixed_height.url"
     >
@@ -26,7 +27,6 @@ defineProps<{
   gif: IGif
   original?: boolean
   shareable?: boolean
-  height?: string
 }>()
 
 function share(gif: IGif) {
