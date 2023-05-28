@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { type IUser } from '@/stores/types'
+import type { IUser } from 'env'
 
 export const useAppStore = defineStore('app', {
   state: () => ({
