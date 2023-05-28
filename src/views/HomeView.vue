@@ -73,8 +73,6 @@ async function fetchGifs() {
     gifs.value = res.gifs
   }, 500) // timeout must be equal to the transition time
   totalCount.value = res.totalCount
-
-  console.log(totalCount.value)
 }
 </script>
 
