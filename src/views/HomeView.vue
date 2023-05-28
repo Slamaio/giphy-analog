@@ -67,10 +67,12 @@ async function fetchGifs() {
 .gif-transition-enter-active,
 .gif-transition-leave-active {
   transition: opacity 0.5s;
+  transition: transform 0.5s;
 }
 
 .gif-transition-enter,
 .gif-transition-leave-to {
-  opacity: 0;
+  opacity: 0.2;
+  transform: translateY(100vw);
 }
 </style>
