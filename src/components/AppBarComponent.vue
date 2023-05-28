@@ -1,12 +1,12 @@
 <template>
-  <v-app-bar flat class="px-2" color="background">
-    <v-row class="align-center justify-center">
-      <v-col :cols="3">
+  <v-app-bar flat class="px-4" color="background">
+    <v-row class="align-center">
+      <v-col cols="3" md="2" offset-md="1" lg="2" offset-lg="2" xl="1" offset-xl="3">
         <router-link to="/">
           <v-img src="@/assets/logo.svg" height="35" />
         </router-link>
       </v-col>
-      <v-col cols="9">
+      <v-col cols="9" md="8" lg="6" xl="5">
         <v-form @submit.prevent="onCLick">
           <v-text-field
             v-model="searchQuery"
