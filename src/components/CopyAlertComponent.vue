@@ -9,7 +9,7 @@
     <v-alert
       v-else-if="appStore.copyAlert == 'error'"
       class="copy_alert"
-      type="success"
+      type="error"
       title="Copy to clipboard failed"
     />
   </v-slide-y-reverse-transition>
