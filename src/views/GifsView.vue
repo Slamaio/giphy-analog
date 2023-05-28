@@ -1,37 +1,38 @@
 <template>
-  <AppBarComponent />
   <v-main>
     <v-container fluid>
-      <GoBackButtonVue block />
-      <v-card v-if="gif?.id" class="bg-background" flat>
+      <GoBackButton block />
+      <v-card v-if="gif?.id" color="background" flat>
         <v-card-title class="px-0 text-wrap">
-          {{ gif?.title }}
+          {{ gifStrippedTitle }}
+          <span v-if="gif.user">
+            by <router-link to="/user">{{ gif.user.display_name }}</router-link>
+          </span>
         </v-card-title>
 
         <v-card-text class="px-0">
-          <GifCardComponent :gif="gif" original shareable />
-          <p>
-            Added by:
-            <router-link v-if="gif?.user" to="/user">{{ gif?.user?.username }}</router-link>
-            <span v-else>Anonym</span>
-          </p>
+          <GifCard :gif="gif" original shareable />
         </v-card-text>
       </v-card>
 
       <v-alert
         v-else
-        class="mx-auto my-5"
+        prominent
+        class="mx-auto my-5 justify-center"
         type="error"
         title="Error!"
         text="Gif not found."
-        max-width="300"
+        max-width="600"
       />
 
-      <v-slide-group v-model="model" show-arrows center-active>
-        <v-slide-group-item v-for="randomGif in randomGifs" :key="randomGif.id">
-          <GifCardComponent class="mx-2" :gif="randomGif" clickable />
-        </v-slide-group-item>
-      </v-slide-group>
+      <v-card color="background" flat>
+        <v-card-title class="ml-11">Random gifs</v-card-title>
+        <v-slide-group v-model="model" show-arrows center-active>
+          <v-slide-group-item v-for="randomGif in randomGifs" :key="randomGif.id">
+            <GifCard class="mx-2" :gif="randomGif" :to="/gifs/ + randomGif.id" />
+          </v-slide-group-item>
+        </v-slide-group>
+      </v-card>
     </v-container>
   </v-main>
 </template>
@@ -42,14 +43,15 @@ import { useRoute } from 'vue-router'
 import type { IGif } from 'env'
 import giphy from '@/api/giphy'
 import { useAppStore } from '@/stores/app'
-import GifCardComponent from '@/components/GifCardComponent.vue'
-import AppBarComponent from '@/components/AppBarComponent.vue'
-import GoBackButtonVue from '@/components/GoBackButton.vue'
+import GifCard from '@/components/GifCardComponent.vue'
+import GoBackButton from '@/components/GoBackButtonComponent.vue'
+import { computed } from 'vue'
 
 const route = useRoute()
 const appStore = useAppStore()
 
 const model = ref(null)
+const randomGifs = ref<IGif[]>([])
 const gif = ref<IGif>({
   id: '1',
   url: '',
@@ -61,7 +63,14 @@ const gif = ref<IGif>({
     fixed_height_still: { url: '' },
   },
 } as IGif)
-const randomGifs = ref<IGif[]>([])
+
+const gifStrippedTitle = computed(() => {
+  if (!gif.value.user) return gif.value.title
+
+  const end = gif.value.title.lastIndexOf(gif.value.user.display_name)
+  const strippedTitle = gif.value.title.substring(0, end - 3) // -3 to account for the length of ' by '
+  return strippedTitle
+})
 
 watch(
   () => route.params.gifId,

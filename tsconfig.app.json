@@ -8,6 +8,5 @@
     "paths": {
       "@/*": ["./src/*"]
     }
-  },
-  "files": ["src/stores/types.ts"]
+  }
 }
