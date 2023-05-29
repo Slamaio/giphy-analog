@@ -1,1 +1,0 @@
-import{D as o,a as s,c as a,w as r,s as c,E as n}from"./index-81afd227.js";const f={};function B(e,t){return s(),a(n,{class:"mb-4",onClick:t[0]||(t[0]=_=>e.$router.go(-1))},{default:r(()=>[c("Go Back")]),_:1})}const k=o(f,[["render",B]]);export{k as G};
