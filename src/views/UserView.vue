@@ -16,7 +16,7 @@
 
 <script setup lang="ts">
 import { onBeforeMount, ref } from 'vue'
-import type { IUser } from 'env'
+import type { IUser } from '@/api/giphy'
 import { useAppStore } from '@/stores/app'
 import GoBackButton from '@/components/GoBackButtonComponent.vue'
 

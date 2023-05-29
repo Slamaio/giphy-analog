@@ -1,6 +1,4 @@
-import { get } from '@/api/http'
-import { type IGif } from 'env'
-import { type IApiResponse } from '@/api/http'
+import { get, type IApiResponse } from '@/api/http'
 
 const apiKey = import.meta.env.VITE_GIPHY_API_KEY
 const apiBase = 'https://api.giphy.com/v1/gifs'
@@ -8,6 +6,26 @@ const apiBase = 'https://api.giphy.com/v1/gifs'
 export interface IGiphy {
   gifs: IGif[]
   totalCount: number
+}
+
+export interface IGif {
+  id: string
+  url: string
+  title: string
+  user?: IUser
+  images: {
+    original: { url: string }
+    original_still: { url: string }
+    fixed_height: { url: string }
+    fixed_height_still: { url: string }
+  }
+}
+
+export interface IUser {
+  avatar_url: string
+  profile_url: string
+  username: string
+  display_name: string
 }
 
 export enum EndpointsUrls {

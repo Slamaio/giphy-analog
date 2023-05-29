@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import type { IUser } from 'env'
+import type { IUser } from '@/api/giphy'
 
 export const useAppStore = defineStore('app', {
   state: () => ({

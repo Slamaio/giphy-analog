@@ -40,8 +40,7 @@
 <script setup lang="ts">
 import { ref, onBeforeMount, watch } from 'vue'
 import { useRoute } from 'vue-router'
-import type { IGif } from 'env'
-import giphy from '@/api/giphy'
+import giphy, { type IGif } from '@/api/giphy'
 import { useAppStore } from '@/stores/app'
 import GifCard from '@/components/GifCardComponent.vue'
 import GoBackButton from '@/components/GoBackButtonComponent.vue'
