@@ -22,7 +22,7 @@
 </template>
 
 <script setup lang="ts">
-import type { IGif } from 'env'
+import type { IGif } from '@/api/giphy'
 import { useAppStore } from '@/stores/app'
 
 const appStore = useAppStore()

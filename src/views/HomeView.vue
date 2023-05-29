@@ -22,10 +22,9 @@
 
 <script setup lang="ts">
 import { watch, ref, computed } from 'vue'
-import type { IGif } from 'env'
 import { storeToRefs } from 'pinia'
 import { useAppStore } from '@/stores/app'
-import giphy, { type IGiphy } from '@/api/giphy'
+import giphy, { type IGiphy, type IGif } from '@/api/giphy'
 import GifCard from '@/components/GifCardComponent.vue'
 
 const appStore = useAppStore()
