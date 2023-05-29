@@ -35,7 +35,7 @@ const limit = ref(20)
 const offset = ref(0)
 const { page } = storeToRefs(appStore)
 const { searchQuery } = storeToRefs(appStore)
-const pagesCount = computed(() => Math.floor(totalCount.value / limit.value))
+const pagesCount = computed(() => Math.ceil(totalCount.value / limit.value))
 
 watch(
   page,
